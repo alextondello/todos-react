@@ -84,7 +84,6 @@ class App extends Component {
 
 App.propTypes = {
   tasks: PropTypes.array.isRequired,
-  incompleteCount: Tasks.find({ checked: { $ne: true } }).count(),
 };
 
 export default createContainer(() => {
