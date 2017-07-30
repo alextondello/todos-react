@@ -1,14 +1,19 @@
+// Meteor
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
-
+// Database
 import { Tasks } from '../api/tasks.js';
-
+// Application
 import Task from './Task.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
-// App component - represents the whole app
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//>     C O M P O N E N T      C O M P O N E N T      C O M P O N E N T      C O M P O N E N T
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////
 class App extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +23,9 @@ class App extends Component {
     };
   }
 
+  //----------------------------------------------------------------------
+  // ...
+  //----------------------------------------------------------------------
   handleSubmit(event) {
     event.preventDefault();
 
@@ -30,12 +38,18 @@ class App extends Component {
     ReactDOM.findDOMNode(this.refs.textInput).value = '';
   }
 
+  //----------------------------------------------------------------------
+  // ...
+  //----------------------------------------------------------------------
   toggleHideCompleted() {
     this.setState({
       hideCompleted: !this.state.hideCompleted,
     });
   }
 
+  //----------------------------------------------------------------------
+  // ...
+  //----------------------------------------------------------------------
   renderTasks() {
     let filteredTasks = this.props.tasks;
 
@@ -57,6 +71,9 @@ class App extends Component {
     });
   }
 
+  //======================================================================
+  // RENDER ==============================================================
+  //======================================================================
   render() {
     return (
       <div className="container">
@@ -94,12 +111,22 @@ class App extends Component {
   }
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//>  V A L I D A T I O N     V A L I D A T I O N     V A L I D A T I O N     V A L I D A T I O N
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////
 App.propTypes = {
   tasks: PropTypes.array.isRequired,
   incompleteCount: PropTypes.number.isRequired,
   currentUser: PropTypes.object,
 };
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//>     R E A C T I V E        R E A C T I V E        R E A C T I V E        R E A C T I V E
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////
 export default createContainer(() => {
   Meteor.subscribe('tasks');
 

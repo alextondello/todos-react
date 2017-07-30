@@ -1,24 +1,39 @@
+// Meteor
 import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import classnames from 'classnames';
 
-import { Tasks } from '../api/tasks.js';
-
-// Task component - represents a single todo item
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//>     C O M P O N E N T      C O M P O N E N T      C O M P O N E N T      C O M P O N E N T
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////
 export default class Task extends Component {
+  //----------------------------------------------------------------------
+  // ...
+  //----------------------------------------------------------------------
   toggleChecked() {
     // Set the checked property to the opposite of its current value
     Meteor.call('tasks.setChecked', this.props.task._id, !this.props.task.checked);
   }
 
+  //----------------------------------------------------------------------
+  // ...
+  //----------------------------------------------------------------------
   deleteThisTask() {
     Meteor.call('tasks.remove', this.props.task._id);
   }
 
+  //----------------------------------------------------------------------
+  // ...
+  //----------------------------------------------------------------------
   togglePrivate() {
     Meteor.call('tasks.setPrivate', this.props.task._id, ! this.props.task.private);
   }
 
+  //======================================================================
+  // RENDER ==============================================================
+  //======================================================================
   render() {
     // Give tasks a different className when they are checked off,
     // so that we can style them nicely in CSS
@@ -54,6 +69,11 @@ export default class Task extends Component {
   }
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//>  V A L I D A T I O N     V A L I D A T I O N     V A L I D A T I O N     V A L I D A T I O N
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////
 Task.propTypes = {
   // This component gets the task to display through a React prop.
   // We can use propTypes to indicate it is required

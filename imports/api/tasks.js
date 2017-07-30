@@ -1,3 +1,4 @@
+// Meteor
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
@@ -17,7 +18,15 @@ if (Meteor.isServer) {
   });
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//>   M E T H O D S      M E T H O D S      M E T H O D S      M E T H O D S      M E T H O D S
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////
 Meteor.methods({
+  //----------------------------------------------------------------------
+  // ...
+  //----------------------------------------------------------------------
   'tasks.insert'(text) {
     check(text, String);
 
@@ -34,6 +43,9 @@ Meteor.methods({
     });
   },
 
+  //----------------------------------------------------------------------
+  // ...
+  //----------------------------------------------------------------------
   'tasks.remove'(taskId) {
     check(taskId, String);
 
@@ -46,6 +58,9 @@ Meteor.methods({
     Tasks.remove(taskId);
   },
 
+  //----------------------------------------------------------------------
+  // ...
+  //----------------------------------------------------------------------
   'tasks.setChecked'(taskId, setChecked) {
     check(taskId, String);
     check(setChecked, Boolean);
@@ -59,6 +74,9 @@ Meteor.methods({
     Tasks.update(taskId, { $set: { checked: setChecked } });
   },
 
+  //----------------------------------------------------------------------
+  // ...
+  //----------------------------------------------------------------------
   'tasks.setPrivate'(taskId, setToPrivate) {
     check(taskId, String);
     check(setToPrivate, Boolean);
